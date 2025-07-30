@@ -43,7 +43,7 @@ Add screenshots of your app in the assets/screenshots folder and link them here.
 <img width="300" height="600" alt="Screenshot_1753883843" src="https://github.com/user-attachments/assets/f0a43f96-6fa4-430d-b207-9bc91696753b" />
 <img width="300" height="600" alt="Screenshot_1753883838" src="https://github.com/user-attachments/assets/3cbda9ad-cb48-4bc9-94a1-b1d5ac00fc09" />
 <img width="300" height="600" alt="Screenshot_1753883823" src="https://github.com/user-attachments/assets/c1925beb-2182-49a8-b9cb-10c5f950ef22" />
-<img width="300" height="600" alt="Screenshot_1753285972" src="https://github.com/user-attachments/assets/6bd40877-75ba-41a1-a03e-02f592d84c19" />
+
 
 
 📦 Installation
