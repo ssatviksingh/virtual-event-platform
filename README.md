@@ -43,25 +43,25 @@ Add screenshots of your app in the `assets/screenshots` folder and link them her
 
 ## 📦 Installation
 # Clone the repository
-git clone https://github.com/yourusername/virtual-event-platform.git
+- git clone https://github.com/ssatviksingh/virtual-event-platform.git
 
 # Install dependencies
-cd virtual-event-platform
-npm install
+- cd virtual-event-platform
+- npm install
 
 # Start Expo
-npx expo start
+- npx expo start
 
 ---
 
 📲 Running on Android/iOS
-Expo Go: npx expo start → Scan QR code
+- Expo Go: npx expo start → Scan QR code
 
 Development Build:
 
-npx expo run:android
+- npx expo run:android
 # or
-npx expo run:ios
+- npx expo run:ios
 
 ---
 💡 Future Enhancements
