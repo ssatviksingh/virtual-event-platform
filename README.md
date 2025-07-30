@@ -1,38 +1,33 @@
-📱 Virtual Event Platform
+# 📱 Virtual Event Platform
+
 A powerful React Native & Expo-based Virtual Event Management App that allows users to create, manage, and join online/offline events with real-time features.
 
+---
 
-🚀 Features
-📅 Event Creation & Management (Create, edit, delete events)
+## 🚀 Features
+- 📅 Event Creation & Management (Create, edit, delete events)
+- 🔔 Push Notifications for new events
+- ⭐ Favorites & Filters to organize events
+- 🌙 Dark Mode for a personalized experience
+- 👥 RSVP & Attendance Tracking
+- 🎥 Live Streaming Support
+- 🏷️ Event Tags for better categorization
+- 🗂 Personal Notes (Notion-style) per event
+- 🔍 Search & Filter to find events quickly
 
-🔔 Push Notifications for new events
+---
 
-⭐ Favorites & Filters to organize events
+## 🛠️ Tech Stack
+- **Frontend:** React Native (Expo SDK 53), TypeScript  
+- **Backend:** Node.js, Express, MongoDB  
+- **Notifications:** Expo Notifications  
+- **Storage:** AsyncStorage  
 
-🌙 Dark Mode for a personalized experience
+---
 
-👥 RSVP & Attendance Tracking
+## 📸 Screenshots
+Add screenshots of your app in the `assets/screenshots` folder and link them here.
 
-🎥 Live Streaming Support
-
-🏷️ Event Tags for better categorization
-
-🗂 Personal Notes (Notion-style) per event
-
-🔍 Search & Filter to find events quickly
-
-
-🛠️ Tech Stack
-Frontend: React Native (Expo SDK 53), TypeScript
-
-Backend: Node.js, Express, MongoDB
-
-Notifications: Expo Notifications
-
-Storage: AsyncStorage
-
-📸 Screenshots
-Add screenshots of your app in the assets/screenshots folder and link them here.
 <img width="300" height="600" alt="Screenshot_1753883861" src="https://github.com/user-attachments/assets/1711bee2-56bb-4be6-8ebe-8135c1446baa" />
 <img width="300" height="600" alt="Screenshot_1753883856" src="https://github.com/user-attachments/assets/cc1eca37-8cc9-4012-9678-4afa8177f3b2" />
 <img width="300" height="600" alt="Screenshot_1753883854" src="https://github.com/user-attachments/assets/3b9efbe9-c01d-4450-8f61-296f75fbb89e" />
@@ -44,9 +39,9 @@ Add screenshots of your app in the assets/screenshots folder and link them here.
 <img width="300" height="600" alt="Screenshot_1753883838" src="https://github.com/user-attachments/assets/3cbda9ad-cb48-4bc9-94a1-b1d5ac00fc09" />
 <img width="300" height="600" alt="Screenshot_1753883823" src="https://github.com/user-attachments/assets/c1925beb-2182-49a8-b9cb-10c5f950ef22" />
 
+---
 
-
-📦 Installation
+## 📦 Installation
 # Clone the repository
 git clone https://github.com/yourusername/virtual-event-platform.git
 
@@ -57,16 +52,18 @@ npm install
 # Start Expo
 npx expo start
 
+---
 
 📲 Running on Android/iOS
 Expo Go: npx expo start → Scan QR code
 
 Development Build:
+
 npx expo run:android
 # or
 npx expo run:ios
 
-
+---
 💡 Future Enhancements
 ✅ Calendar integration
 ✅ Admin panel for event analytics
