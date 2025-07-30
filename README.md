@@ -65,6 +65,6 @@ Development Build:
 
 ---
 💡 Future Enhancements
-✅ Calendar integration
-✅ Admin panel for event analytics
-✅ AI-based event recommendations
+- ✅ Calendar integration
+- ✅ Admin panel for event analytics
+- ✅ AI-based event recommendations
