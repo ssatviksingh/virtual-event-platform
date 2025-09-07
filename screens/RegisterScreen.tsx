@@ -16,43 +16,43 @@ type RootStackParamList = {
   Login: undefined;
 };
 
-type NavigationProp = StackNavigationProp<RootStackParamList, "Register">;
+type NavigationProp = StackNavigationProp<RootStackParamList, "Register">; // navigation prop for register screen
 
 const RegisterScreen = () => {
   const navigation = useNavigation<NavigationProp>();
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); // name state
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(""); // password state
 
   const handleRegister = async () => {
     if (!name || !email || !password) {
-      Alert.alert("Error", "Please fill all fields");
+      Alert.alert("Error", "Please fill all fields"); // alert error
       return;
     }
 
     try {
-      const res = await api.post("/auth/register", { name, email, password });
+      const res = await api.post("/auth/register", { name, email, password }); // post register
       Alert.alert("Success", "Account created. Please login.");
-      navigation.navigate("Login");
+      navigation.navigate("Login"); // navigate to login
     } catch (err) {
-      Alert.alert("Error", "Registration failed");
+      Alert.alert("Error", "Registration failed"); // alert error
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>Register</Text> // register text
 
       <TextInput
         style={styles.input}
-        placeholder="Full Name"
+        placeholder="Full Name" // full name
         value={name}
         onChangeText={setName}
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="Email" // email
         keyboardType="email-address"
         autoCapitalize="none"
         value={email}
@@ -61,18 +61,18 @@ const RegisterScreen = () => {
 
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Password" // password
         secureTextEntry
         value={password}
         onChangeText={setPassword}
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleRegister}>
+      <TouchableOpacity style={styles.button} onPress={handleRegister}> // create account button
         <Text style={styles.buttonText}>Create Account</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-        <Text style={styles.link}>Already have an account? Login</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Login")}> // login button
+        <Text style={styles.link}>Already have an account? Login</Text> 
       </TouchableOpacity>
     </View>
   );

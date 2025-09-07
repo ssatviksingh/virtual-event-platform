@@ -12,7 +12,7 @@ import { useNavigation, useIsFocused } from "@react-navigation/native";
 import api from "../services/api";
 import EventCard from "../components/EventCard";
 
-export default function FavoritesScreen() {
+export default function FavoritesScreen() { // favorites screen
   const [favorites, setFavorites] = useState<string[]>([]);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,22 +23,22 @@ export default function FavoritesScreen() {
 
   const loadData = async () => {
     try {
-      const fav = await AsyncStorage.getItem("favorites");
+      const fav = await AsyncStorage.getItem("favorites"); // get favorites from async storage
       setFavorites(fav ? JSON.parse(fav) : []);
       const res = await api.get("/events");
-      setEvents(res.data);
+      setEvents(res.data); // set events
     } catch (err) {
-      console.error("Failed to fetch favorites or events", err);
+      console.error("Failed to fetch favorites or events", err); // log error
     } finally {
       setLoading(false);
-      setRefreshing(false);
+      setRefreshing(false); // set refreshing to false
     }
   };
 
   useEffect(
     () => {
       if (isFocused) {
-        setLoading(true);
+        setLoading(true); // set loading to true
         loadData();
       }
     },
@@ -47,34 +47,34 @@ export default function FavoritesScreen() {
   );
 
   const onRefresh = () => {
-    setRefreshing(true);
+    setRefreshing(true); // set refreshing to true
     loadData();
   };
 
-  const favoriteEvents = events.filter((e) => favorites.includes(e._id));
+  const favoriteEvents = events.filter((e) => favorites.includes(e._id)); // filter events by favorites ids
 
-  if (loading) return <ActivityIndicator style={{ flex: 1 }} />;
+  if (loading) return <ActivityIndicator style={{ flex: 1 }} />; // if loading, return activity indicator if loading
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+    <View style={{ flex: 1, backgroundColor: "#fff" }}> // view
       <FlatList
         data={favoriteEvents}
-        keyExtractor={(item) => item._id}
+        keyExtractor={(item) => item._id} // key extractor
         renderItem={({ item }) => (
           <EventCard
             id={item._id}
-            title={item.title}
-            date={item.date}
-            speaker={item.speaker}
-            joinedCount={item.joinedCount}
-            onPress={() => navigation.navigate("EventDetail", { event: item })}
+            title={item.title} // title   
+            date={item.date} // date
+            speaker={item.speaker} // speaker
+            joinedCount={item.joinedCount} // joined count
+            onPress={() => navigation.navigate("EventDetail", { event: item })} // on press
           />
         )}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} /> // refresh control
         }
         ListEmptyComponent={
-          <Text style={styles.emptyText}>No favorites yet.</Text>
+          <Text style={styles.emptyText}>No favorites yet.</Text> // empty text
         }
         contentContainerStyle={{ paddingBottom: 120 }}
       />

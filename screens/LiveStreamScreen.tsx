@@ -20,22 +20,22 @@ type Event = {
   description: string;
 };
 
-type RootStackParamList = {
+type RootStackParamList = { // root stack param list
   LiveStream: { event: Event };
 };
 
-type LiveRouteProp = RouteProp<RootStackParamList, "LiveStream">;
+type LiveRouteProp = RouteProp<RootStackParamList, "LiveStream">; // live route prop
 
 const LiveStreamScreen = () => {
-  const route = useRoute<LiveRouteProp>();
+  const route = useRoute<LiveRouteProp>(); // use route
   const { event } = route.params;
 
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<string[]>([]); // messages state
   const [message, setMessage] = useState("");
 
   const sendMessage = () => {
     if (message.trim()) {
-      setMessages([...messages, message]);
+      setMessages([...messages, message]); // set messages
       setMessage("");
     }
   };
@@ -45,35 +45,35 @@ const LiveStreamScreen = () => {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <Text style={styles.eventTitle}>{event.title} - Live</Text>
+      <Text style={styles.eventTitle}>{event.title} - Live</Text> // event title
 
       {/* 🎥 Dummy Video Player */}
       <Video
         source={{
-          uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+          uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4", // video source
         }}
         useNativeControls
         resizeMode="contain"
         style={styles.video}
       />
 
-      {/* 💬 Chat */}
+      {/* 💬 Chat */} 
       <FlatList
         data={messages}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }) => <Text style={styles.chatMsg}>👤 {item}</Text>}
+        renderItem={({ item }) => <Text style={styles.chatMsg}>👤 {item}</Text>} // render item
         contentContainerStyle={styles.chatBox}
       />
 
       <View style={styles.inputContainer}>
         <TextInput
-          value={message}
-          onChangeText={setMessage}
-          placeholder="Type your message..."
+          value={message} // message
+          onChangeText={setMessage} // on change text
+          placeholder="Type your message..." // placeholder
           style={styles.input}
         />
-        <TouchableOpacity onPress={sendMessage} style={styles.sendButton}>
-          <Text style={styles.sendText}>Send</Text>
+        <TouchableOpacity onPress={sendMessage} style={styles.sendButton}> // send button
+          <Text style={styles.sendText}>Send</Text> // send text
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>

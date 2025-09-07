@@ -12,7 +12,7 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import api from "../services/api";
 import * as Notifications from "expo-notifications";
 
-const sendTestNotification = async (eventId: string) => {
+const sendTestNotification = async (eventId: string) => { // send test notification
   await Notifications.scheduleNotificationAsync({
     content: {
       title: "✏️ Event Updated",
@@ -25,7 +25,7 @@ const sendTestNotification = async (eventId: string) => {
   });
 };
 
-const EditEventScreen = () => {
+const EditEventScreen = () => { // edit event screen
   const route = useRoute();
   const navigation = useNavigation();
   const { event } = route.params;
@@ -35,7 +35,7 @@ const EditEventScreen = () => {
   const [speaker, setSpeaker] = useState(event.speaker);
   const [description, setDescription] = useState(event.description);
 
-  const handleUpdate = async () => {
+  const handleUpdate = async () => { // handle update function in edit event screen
     try {
       await api.put(`/events/${event._id}`, {
         title,
@@ -44,45 +44,45 @@ const EditEventScreen = () => {
         description,
       });
 
-      Alert.alert("Success", "Event updated successfully");
+      Alert.alert("Success", "Event updated successfully"); // alert success
       navigation.goBack();
     } catch (err) {
-      Alert.alert("Error", err.response?.data?.message || "Update failed");
+      Alert.alert("Error", err.response?.data?.message || "Update failed"); // alert error
     }
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.heading}>Edit Event</Text>
+      <Text style={styles.heading}>Edit Event</Text> // heading
 
       <TextInput
         style={styles.input}
         value={title}
-        onChangeText={setTitle}
+        onChangeText={setTitle} // on change text
         placeholder="Title"
       />
       <TextInput
         style={styles.input}
         value={date}
-        onChangeText={setDate}
+        onChangeText={setDate} // on change text
         placeholder="Date (e.g., July 20, 2025)"
       />
       <TextInput
         style={styles.input}
         value={speaker}
-        onChangeText={setSpeaker}
+        onChangeText={setSpeaker} // on change text
         placeholder="Speaker"
       />
       <TextInput
         style={[styles.input, { height: 100 }]}
-        value={description}
+        value={description} // description in edit event screen
         onChangeText={setDescription}
         placeholder="Description"
         multiline
       />
 
       <TouchableOpacity style={styles.button} onPress={handleUpdate}>
-        <Text style={styles.buttonText}>Update Event</Text>
+        <Text style={styles.buttonText}>Update Event</Text> // update event button
       </TouchableOpacity>
     </ScrollView>
   );

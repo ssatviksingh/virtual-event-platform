@@ -7,7 +7,7 @@ interface Props {
   userId: string;
 }
 
-const EventNotes: React.FC<Props> = ({ eventId, userId }) => {
+const EventNotes: React.FC<Props> = ({ eventId, userId }) => { // event notes component
   const [note, setNote] = useState("");
 
   const storageKey = `notes_${userId}_${eventId}`;
@@ -15,32 +15,32 @@ const EventNotes: React.FC<Props> = ({ eventId, userId }) => {
   useEffect(() => {
     const loadNote = async () => {
       try {
-        const saved = await AsyncStorage.getItem(storageKey);
+        const saved = await AsyncStorage.getItem(storageKey); // get note from async storage
         if (saved) setNote(saved);
       } catch (e) {
-        console.log("Failed to load note:", e);
+        console.log("Failed to load note:", e); // log error
       }
     };
     loadNote();
   }, [storageKey]);
 
   const saveNote = async (text: string) => {
-    setNote(text);
+    setNote(text); // set note
     try {
       await AsyncStorage.setItem(storageKey, text);
     } catch (e) {
-      console.log("Failed to save note:", e);
+      console.log("Failed to save note:", e); // log error
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>📝 Your Notes</Text>
+      <Text style={styles.label}>📝 Your Notes</Text> // label
       <TextInput
         style={styles.input}
-        placeholder="Write your thoughts here..."
+        placeholder="Write your thoughts here..." // placeholder
         value={note}
-        onChangeText={saveNote}
+        onChangeText={saveNote} // on change text
         multiline
       />
     </View>

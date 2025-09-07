@@ -12,52 +12,52 @@ import CreateEventScreen from "./screens/CreateEventScreen";
 import EditEventScreen from "./screens/EditEventScreen";
 import EventDetailScreen from "./screens/EventDetailScreen";
 import LiveStreamScreen from "./screens/LiveStreamScreen";
+
 import { ThemeProvider } from "./context/ThemeContext";
 import { NavigationContainerRefContext } from "./context/NavigationContainerRefContext";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator(); // create stack navigator
 
 export default function App() {
-  const navigationRef = useRef(null);
+  const navigationRef = useRef(null); // navigation ref
 
   useEffect(() => {
-    registerForPushNotificationsAsync();
+    registerForPushNotificationsAsync(); // register for push notifications
     Notifications.addNotificationResponseReceivedListener((response) => {
-  console.log("FULL NOTIFICATION RESPONSE:", JSON.stringify(response, null, 2));
-  // ...existing code
+  console.log("FULL NOTIFICATION RESPONSE:", JSON.stringify(response, null, 2)); // log notification response
 });
     const foregroundListener = Notifications.addNotificationReceivedListener(
       (notification) => {
-        const eventId = notification.request.content.data?.eventId;
-        console.log("📩 [Foreground] Event ID from notification:", eventId);
+        const eventId = notification.request.content.data?.eventId; // event id
+        console.log("📩 [Foreground] Event ID from notification:", eventId); // log notification event id
 
         if (eventId) {
-          navigationRef.current?.navigate("EventDetail", { eventId });
+          navigationRef.current?.navigate("EventDetail", { eventId }); // navigate to event detail
         }
       }
     );
 
     const tapListener = Notifications.addNotificationResponseReceivedListener(
       (response) => {
-        const eventId = response.notification.request.content.data?.eventId;
+        const eventId = response.notification.request.content.data?.eventId; // event id
         console.log("📩 [Tapped] Event ID from notification:", eventId);
 
         if (eventId) {
-          navigationRef.current?.navigate("EventDetail", { eventId });
+          navigationRef.current?.navigate("EventDetail", { eventId }); // navigate to event detail
         }
       }
     );
 
     return () => {
-      foregroundListener.remove();
-      tapListener.remove();
+      foregroundListener.remove(); // remove foreground listener
+      tapListener.remove(); // remove tap listener
     };
   }, []);
 
   return (
     <ThemeProvider>
       <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator initialRouteName="Splash">
+        <Stack.Navigator initialRouteName="Splash"> // stack navigator
           <Stack.Screen
             name="Splash"
             component={SplashScreen}
